@@ -1,5 +1,7 @@
 
-// Rappel des types de données
+  //---------------------------- //
+ // Rappel des types de données //
+//---------------------------- //
 
 let string = "Chaine";
 let number = 25;
@@ -52,9 +54,9 @@ let data = [
 // data[2].technos[0] > "Php"
 
 
-// --------------------------
-// Les structures de controle 
-// --------------------------
+  //---------------------------- //
+ // Les structures de controle  //
+//---------------------------- //
 
 if(data[0].age > data[1].age) {
     // console.log(data[0].pseudo + " est plus agé que " + data[1].pseudo);
@@ -114,9 +116,129 @@ document.body.addEventListener("click", (e) => {
     }
 });
 
-// Méthode String
+  //---------------- //
+ // Méthodes String //
+//---------------- //
 
 let string2 = "Javascript est un language orienté objet"
 
-// eval > concaténation
-console.log(eval(parseInt("1") + 2));
+// eval > concaténation | parseInt > converti en string
+// console.log(eval(parseInt("1") + 2));
+// Not a number > renboi true ; false
+// console.log(isNaN(""));
+// console.log(string2[string2.length - 1]);
+
+// Chercher l'index > retourn -1 si inconnu
+// console.log(string2.indexOf("x"));
+
+// Slice > couper de 5 à 17
+let newString = string2.slice(5, 17)
+// console.log(newString);
+
+// Split > découpe entre chaque "i"
+// console.log(string2.split("i"))
+
+// mettre en minuscule et en ..
+// console.log(string2.toLowerCase());
+// Majuscule.
+// console.log(string2.toUpperCase());
+// Remplace Javascrit par php
+// console.log(string2.replace("Javascript", "PHP"));
+
+  //----------------- //
+ // Méthodes Numbers //
+//----------------- //
+
+let number2 = 42.1234
+let numberString = "42.12 est un chiffre."
+
+// Garde les deux chiffres après la virgule
+// console.log(number2.toFixed(2));
+// Transforme un nombre les chiffres
+// console.log(parseInt(numberString));
+// Récupère des nombres avec une virgule
+// console.log(parseFloat(numberString));
+
+// Math
+// console.log(MAth.PI)
+// Arrondie au plus proche
+// console.log(Math.round(4.6))
+// au plus bas
+// console.log(Math.floor(4.2));
+// au plus haut
+// console.log(Math.ceil(4.9));
+// Genere un chiffre en 0 et 100
+// console.log(Math.random() * 50);
+
+
+  //---------------- //
+ // Méthodes Arrays //
+//---------------- //
+
+let array3 = ["Javascript", "Php", "Python"];
+let array4 = ["Ruby", "Solidity"];
+
+// concatene array3 avec array 4
+// let newArray = array3.concat(array4);
+// console.log(newArray)
+
+// Destructure un tableau
+let newArray = [...array3, ...array4]
+// console.log(newArray)
+
+// Permet de destructurer un tableau et séparer les éléments avec "&"
+// console.log(array3.join("&"))
+
+// Enumerer en nommant chaques éléments "languages"
+// array3.forEach((languages) => console.log(languages));
+
+// Vérifier si ils sont tous "Php"
+// console.log(array3.every((language) => language === "Php"));
+// Un seul
+// console.log(array3.some((language) => language === "Php"));
+
+// Enlever le premier element du tableau
+let shift = array3.shift()
+// retirer le dernier element
+let pop = array3.pop()
+
+// Remplace à partir de l'index "1", nombre d'element "2", "new element"
+const restArray = array3.splice(1, 2, "C++")
+
+// IMPORTANT //
+let arrayNumber = [4, 14, 25, 12, 1];
+// additionne tous les elements d'un tableau selon opérateur
+// console.log(arrayNumber.reduce((x, y) => x + y ));
+
+let addElement = arrayNumber.push("Coucou")
+// Range dans l'ordre croissant "a - b" ou décroissant "b - a"
+console.log(arrayNumber.sort((a, b) => a - b));
+// Filtrer
+let filter = arrayNumber.filter((number) => number > 10);
+// MAP > liste les élement
+arrayNumber.map((number) => document.body.innerHTML += `
+<li>${number}</li>`).join("");
+
+  //----------------- //
+ // Méthodes objects //
+//----------------- //
+
+document.body.innerHTML = data
+// filtre les prenoms qui possede un a
+  .filter((user) => user.pseudo.includes("a"))
+// Range du plus agée au plus jeune
+  .sort((a, b) => b.age - a.age)
+  .map(
+    (user) =>
+      `
+    <div class="user-card">
+      <h2>${user.pseudo}</h2>
+      <p>Age : ${user.age} ans</p>
+      <p>Status : ${user.admin ? "Modérateur" : "Membre"}</p>
+    </div>
+  `
+//   test si user.admin = true ? si oui : sinon
+  )
+  .join("");
+
+
