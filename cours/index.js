@@ -212,33 +212,127 @@ let arrayNumber = [4, 14, 25, 12, 1];
 
 let addElement = arrayNumber.push("Coucou")
 // Range dans l'ordre croissant "a - b" ou décroissant "b - a"
-console.log(arrayNumber.sort((a, b) => a - b));
+// console.log(arrayNumber.sort((a, b) => a - b));
 // Filtrer
 let filter = arrayNumber.filter((number) => number > 10);
 // MAP > liste les élement
-arrayNumber.map((number) => document.body.innerHTML += `
-<li>${number}</li>`).join("");
+// arrayNumber.map((number) => document.body.innerHTML += `
+// <li>${number}</li>`).join("");
 
   //----------------- //
  // Méthodes objects //
 //----------------- //
 
-document.body.innerHTML = data
+// document.body.innerHTML = data
 // filtre les prenoms qui possede un a
-  .filter((user) => user.pseudo.includes("a"))
+  // .filter((user) => user.pseudo.includes("a"))
 // Range du plus agée au plus jeune
-  .sort((a, b) => b.age - a.age)
-  .map(
-    (user) =>
-      `
-    <div class="user-card">
-      <h2>${user.pseudo}</h2>
-      <p>Age : ${user.age} ans</p>
-      <p>Status : ${user.admin ? "Modérateur" : "Membre"}</p>
-    </div>
-  `
+  // .sort((a, b) => b.age - a.age)
+  // .map(
+  //   (user) =>
+  //     `
+  //   <div class="user-card">
+  //     <h2>${user.pseudo}</h2>
+  //     <p>Age : ${user.age} ans</p>
+  //     <p>Status : ${user.admin ? "Modérateur" : "Membre"}</p>
+  //   </div>
+  // `
 //   test si user.admin = true ? si oui : sinon
-  )
-  .join("");
+  // )
+  // .join("");
+
+  //---------- //
+ // Les dates //
+//---------- //
+
+// date classique
+let date = new Date();
+
+// Timestamp
+let timestanp = Date.parse(date);
+// console.log(timestanp)
+
+// IsoString
+const iso = date.toISOString();
+
+// Formate la date
+function dateParser(chaine) {
+  let newDate = new Date(chaine).toLocaleDateString("fr-FR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric"
+
+  })
+  return newDate
 
 
+}
+
+// console.log(dateParser(date))
+
+
+  //-------------- //
+ // Destructuring //
+//-------------- //
+
+let moreData = {
+  destVar : ["Element 1", "Element 2"]
+}
+
+const { destVar } = moreData
+
+// console.log(moreData.destVar[0]);
+// console.log(destVar);
+
+let array5 = [70, 80, 90]
+// isoler données d'un tableau dans une variable
+let [x, y, z] = array5
+// console.log(x, y, z);
+
+// Formate la date en Fr
+const dateDestructuring = (chaine) => {
+  let newDate = chaine.split("T")[0];
+  let [year, month, day] = newDate.split("-");
+
+  return [day, month, year].join("/")
+}
+
+// console.log(dateDestructuring(iso));
+
+  //--------- //
+ // Datasets // ---> données à mettre dans des balise
+//--------- //
+
+const h3js = document.getElementById("javascript");
+// console.log(h3js);
+
+const h3 = document.querySelectorAll("h3");
+
+// h3.forEach((language) => console.log(language.dataset.lang));
+
+  //---------- //
+ // Les Regex // ---> test chaine de caractere
+//---------- //
+
+let mail = "from_scratch133@gmail.com";
+// search => renvoi 0 ou -1
+mail.search(/frscceeceom/);
+// replace
+mail.replace(/from/, "de");
+// match => renvoi un tableau ou null
+mail.match(/SCratch/i);
+// cherche si une ou plusieurs lettres/chiffres figure dans la variable
+mail.match(/[zg1]/);
+// cherche si il y a un chiffre
+mail.match(/\d/);
+// cherche une lettre
+mail.match(/[a-z]/)
+// 1st part => \w tous les caracteres (chiffre ou lettre), "_" ou "-".
+// 2nd part => "@", tous les caracteres et "-".
+// 3rd part => "." lettre comprise entre a et z, de 2 à 4
+// $ => fin, i => pas sensible à la casse (lower, upper)
+
+
+console.log(mail.match(/[\w_-]+@[\w-]+\.[a-z]{2,4}$/i));
