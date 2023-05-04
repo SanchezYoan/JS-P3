@@ -329,10 +329,14 @@ mail.match(/[zg1]/);
 mail.match(/\d/);
 // cherche une lettre
 mail.match(/[a-z]/)
+
 // 1st part => \w tous les caracteres (chiffre ou lettre), "_" ou "-".
-// 2nd part => "@", tous les caracteres et "-".
+// 2nd part => ^ = start, "@", tous les caracteres et "-".
 // 3rd part => "." lettre comprise entre a et z, de 2 à 4
-// $ => fin, i => pas sensible à la casse (lower, upper)
+// $ = fin, i => pas sensible à la casse (lower, upper)
+mail.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i);
 
-
-console.log(mail.match(/[\w_-]+@[\w-]+\.[a-z]{2,4}$/i));
+// Separateur
+let separator = 265264849;
+// Ajoute un espace tous les milles
+separator.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " " );
